@@ -1,0 +1,20 @@
+.container {
+	width: 40%;
+	margin: 10px auto;
+	border: 1px solid #000;
+	border-radius: 20px;
+	background: lightblue;
+}
+.task-list {
+	width: 100%;
+	padding: 0 20px;
+}
+.tasks {
+	list-style: none;
+}
+.completed {
+	margin-top: 15px;
+}
+.done {
+	text-decoration: line-through;
+}

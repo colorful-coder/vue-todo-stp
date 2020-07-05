@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Todo</title>
+    <!-- Bootstrap CSS  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Custom CSS  -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <div class="row justify-content-center">
+        <h2>Todo List [{{ remaining }}]</h2>
+      </div>
+      <div class="row">
+        <input class="form-control m-2" autocomplete="off" v-model="newItem" placeholder="What needs to be done?" @keyup.enter="addItem()">
+      </div>
+      <div class="row d-flex m-2">
+        <button class="mr-2 p-2 btn btn-sm btn-warning" @click="clearComplete()">Clear Complete</button>
+        <button class="p-2 btn btn-sm btn-danger" @click="allDelete()">Remove All</button>
+      </div>
+      <div class="row">
+        <ul class="task-list">
+          <li v-for="(task, index) in tasks" class="tasks d-flex m-2">
+            <input class="p-2 completed" type="checkbox" v-model="task.completed">
+            <input class="p-2" v-if="task.editMode" type="text" v-model="task.name" @keyup.enter="editDone(task)">
+            <span class="p-2" v-else :class="task.completed ? 'done' : ''" @dblclick="editTask(task)">{{ task.name }}</span>
+            <button class="ml-auto p-2 btn btn-sm btn-danger" @click=deleteItem(index)>Delete</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Jquery JS  -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS  -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Custom JS -->
+    <script src="todo.js"></script>
+</body>
+
+</html>
